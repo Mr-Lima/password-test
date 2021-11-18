@@ -7,7 +7,6 @@ async function main() {
   app.use(express.json());
 
   loadRoutes(app);
-  // openServer(app, ENVS.PORT);
 }
 
 main();
