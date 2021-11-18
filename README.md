@@ -14,6 +14,7 @@ Api para test de senhas
   - Não possuir caracteres repetidos dentro do conjunto
 
 ## Como executar
+- Caso deseje, já existe um ec2 com a aplicação rodando em http://ec2-18-228-240-46.sa-east-1.compute.amazonaws.com:3000/, caso contrário leia abaixo
 - Clone o repositório
 - é necessário NodeJS previamente instalado
 - ``` npm run start ``` para transpilar e startar o servidor ou ``` npm run start:dev ``` para o modo de desenvolvimento com hot-reload
