@@ -1,26 +1,27 @@
 import PasswordService from '../../src/domains/password/password.service';
+import passwordsMock from '../mocks/passwords.json';
 
 test('password challenges', () => {
-  const passwords = {
-    invalids: [
-      '',
-      'aa',
-      'ab',
-      'AAAbbbCc',
-      'AbTp9!foo',
-      'AbTp9!foA',
-      'AbTp9 fok',
-    ],
-    valids: [
-      'AbTp9!fok',
-    ]
-  };
+  expect(PasswordService.isValid('')).toBe(false);
+  expect(PasswordService.isValid('aa')).toBe(false);
+  expect(PasswordService.isValid('ab')).toBe(false);
+  expect(PasswordService.isValid('AAAbbbCc')).toBe(false);
+  expect(PasswordService.isValid('AbTp9!foo')).toBe(false);
+  expect(PasswordService.isValid('AbTp9!foA')).toBe(false);
+  expect(PasswordService.isValid('AbTp9 fok')).toBe(false);
+  expect(PasswordService.isValid('P@SsW0rD')).toBe(false);
 
-  passwords.invalids.forEach((password) => {
-    expect(PasswordService.isValid(password)).toBe(false);
+  expect(PasswordService.isValid('AbTp9!fok')).toBe(true);
+});
+
+test('password mass test', () => {
+  const passwords = passwordsMock;
+
+  passwords.valids.forEach(password => {
+    expect(PasswordService.isValid(password)).toBe(true);
   });
 
-  passwords.valids.forEach((password) => {
-    expect(PasswordService.isValid(password)).toBe(true);
+  passwords.invalids.forEach(password => {
+    expect(PasswordService.isValid(password)).toBe(false);
   });
 });
